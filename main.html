@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+
+    <!-- LOGIN GATE -->
+    <div id="loginOverlay">
+        <div id="loginBox">
+            <div class="login-heart">♡</div>
+            <p class="login-eyebrow">A LITTLE FOREVER · PRIVATE PAGE</p>
+            <h2 class="login-title">Verify Yourself</h2>
+            <p class="login-sub">This page is only for those who know the secret.</p>
+
+            <form id="loginForm">
+                <input id="loginName" type="text" placeholder="Your name..." required autocomplete="off">
+                <input id="loginPasskey" type="password" placeholder="Passkey..." required>
+                <button type="submit">ENTER ↗</button>
+            </form>
+
+            <p id="loginFeedback" aria-live="polite"></p>
+        </div>
+    </div>
+
+    <!-- SITE CONTENT (hidden until login) -->
+    <div id="siteContent" style="display:none">
+
+        <header class="navbar">
+            <a href="#home" class="logo">A LITTLE FOREVER <span>♥</span></a>
+            <button id="musicBtn">♫ PLAY OUR SONG</button>
+            <audio id="music" src="music.mp3" loop></audio>
+        </header>
+
+        <main>
+            <!-- COVER -->
+            <section class="cover" id="home">
+                <div class="cover-image">
+                    <img src="media/img01.jpeg" alt="Raj and Dabboo">
+                    <span class="image-caption">the two of us, always</span>
+                </div>
+
+                <div class="cover-content">
+                    <p class="eyebrow">A CINEMATIC LOVE STORY · EST. 2023</p>
+                    <div class="heart-outline">♡</div>
+                    <p class="small-script">A story written in stars</p>
+                    <h1>For<br><em>Dabboo Devi</em></h1>
+                    <p class="subtitle">Three years of us. A thousand little moments.</p>
+                    <div class="cover-date">
+                        <span>RAJ ♥</span>
+                        <span>07 NOVEMBER 2026</span>
+                        <span>∞</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- OUR STORY -->
+            <section class="story reveal" id="story">
+                <p class="eyebrow">CHAPTER 01 · THE BEGINNING</p>
+                <h2>It was never just a date.<br>
+                    <em>It was the start of my favourite story.</em>
+                </h2>
+
+                <div class="story-center">
+                    <div>
+                        <small>THE DAY IT STARTED</small>
+                        <h3>07 · 11 · 2023</h3>
+                        <p>The beginning of everything.</p>
+                    </div>
+                    <div class="sketch">♡</div>
+                    <div>
+                        <small>MY FAVOURITE PERSON</small>
+                        <h3>Dabboo Devi</h3>
+                        <p>My today, my tomorrow.</p>
+                    </div>
+                </div>
+
+                <p class="story-footer">AND I'D CHOOSE YOU AGAIN. ALWAYS.</p>
+            </section>
+
+            <!-- TIMELINE -->
+            <section class="timeline reveal" id="timeline">
+                <p class="eyebrow">CHAPTER 02 · OUR JOURNEY</p>
+                <h2>Three years of <em>us</em></h2>
+
+                <article class="timeline-item">
+                    <span>01</span>
+                    <div>
+                        <small>07 NOVEMBER 2023</small>
+                        <h3>The day our story began</h3>
+                        <p>One date became a thousand memories, and you became my favourite person.</p>
+                    </div>
+                </article>
+
+                <article class="timeline-item">
+                    <span>02</span>
+                    <div>
+                        <small>EVERY LITTLE MOMENT</small>
+                        <h3>Growing together</h3>
+                        <p>The laughs, the talks, the silly moments and the hard days. All of it became our story.</p>
+                    </div>
+                </article>
+
+                <article class="timeline-item">
+                    <span>03</span>
+                    <div>
+                        <small>07 NOVEMBER 2026</small>
+                        <h3>Still my person</h3>
+                        <p>This isn't the end of our story. It's another page I'm lucky to write with you.</p>
+                    </div>
+                </article>
+            </section>
+
+            <!-- LOVE LETTER -->
+            <section class="letter reveal" id="letter">
+                <div class="letter-content">
+                    <p class="eyebrow">CHAPTER 03 · A NOTE FROM ME</p>
+                    <h2>There's something<br>about you, <em>love...</em></h2>
+
+                    <p>
+                        My Dabboo, these three years have given me a thousand
+                        little reasons to smile. You make ordinary days feel
+                        special, and even the smallest moments with you become
+                        memories I want to keep forever.
+                    </p>
+
+                    <p>
+                        Thank you for being you, for standing beside me, and
+                        for being such a beautiful part of my story. I don't
+                        need every day to be perfect. I just want the chance
+                        to keep choosing you, learning you, and growing with you.
+                    </p>
+
+                    <button class="text-btn" id="letterBtn">
+                        A LITTLE MORE, JUST FOR YOU ↗
+                    </button>
+
+                    <div class="hidden-letter" id="hiddenLetter">
+                        If I had to live this life all over again, I'd still
+                        look for you, Dabboo. In every crowd, in every lifetime,
+                        in every version of this world, I'd find my way back to you.
+
+                        <br><br>
+                        Three years down, and my heart still says the same thing:
+                        it's you.
+
+                        <br><br>
+                        <strong>Yours, always. — Raj ♥</strong>
+                    </div>
+                </div>
+
+                <div class="letter-image">
+                    <img src="media/WhatsApp Image 2026-10-25 at 4.40.22 AM.jpeg" alt="Our favourite memory">
+                    <span>my safest place is beside you</span>
+                </div>
+            </section>
+
+            <!-- PHOTO GALLERY -->
+            <section class="gallery reveal" id="memories">
+                <p class="eyebrow">CHAPTER 04 · LITTLE THINGS, BIG FEELINGS</p>
+                <h2>Pieces of <em>our forever</em></h2>
+                <p class="section-desc">A few moments I'd press pause on, if I could.</p>
+
+                <div class="photo-grid">
+                    <figure>
+                        <img src="media/image.png" alt="A favourite memory">
+                        <figcaption>The way you smile</figcaption>
+                    </figure>
+
+                    <figure>
+                        <img src="media/Untitled.jpg" alt="A day together">
+                        <figcaption>my little chios </figcaption>
+                    </figure>
+
+                    <figure>
+                        <video src="media/WhatsApp Video 2026-10-25 at 5.07.59 AM.mp4" autoplay muted loop
+                            playsinline></video>
+                        <figcaption>A thousand more to come</figcaption>
+                    </figure>
+                </div>
+            </section>
+
+            <!-- SECRET MESSAGE -->
+            <section class="secret reveal" id="secret">
+                <p class="eyebrow">A LITTLE SECRET · ONLY FOR YOU</p>
+                <div class="secret-heart">♡</div>
+                <h2>One more thing<br><em>just for you.</em></h2>
+                <p>Enter our secret word to open your surprise.</p>
+
+                <form id="secretForm">
+                    <input id="password" type="password" placeholder="Our secret word..." required>
+                    <button type="submit">UNLOCK MY NOTE ↗</button>
+                </form>
+
+                <p id="feedback" aria-live="polite"></p>
+
+                <div id="secretMessage">
+                    <h3>To my Dabboo Devi ♥</h3>
+                    <p>
+                        You never have to be anyone other than yourself to be
+                        loved by me. Thank you for these three years.
+                        Whatever life brings, I want us to keep talking,
+                        laughing, learning and choosing each other.
+                    </p>
+                    <p>Happy three years, meri Dabboo. I love you.</p>
+                    <strong>Forever yours, Raj ♥</strong>
+                </div>
+            </section>
+
+            <!-- ENDING -->
+            <section class="ending reveal">
+                <p class="eyebrow">UNTIL ALL OUR TOMORROWS</p>
+                <h2>It's always been<br><em>you.</em></h2>
+                <button id="heartBtn" class="big-heart">♥</button>
+                <p>Happy Anniversary, Dabboo Devi.</p>
+                <p class="signature">Forever yours, Raj.</p>
+                <p id="daysTogether" class="days"></p>
+            </section>
+        </main>
+
+        <footer>
+            MADE WITH LOVE, FOR DABBOO DEVI ♥
+            <br>07 · 11 · 2026
+        </footer>
+
+    </div><!-- end #siteContent -->
+
+    <script src="main.js"></script>
+</body>
+
+</html>
