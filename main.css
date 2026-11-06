@@ -762,6 +762,508 @@ footer {
     letter-spacing: 2px;
 }
 
+
+/* =================================
+   ROYAL LOVE LETTER SECTION
+================================= */
+
+.royal-letter {
+  position: relative;
+  min-height: 900px;
+  padding: 100px 20px;
+  overflow: hidden;
+  text-align: center;
+
+  background:
+    radial-gradient(ellipse at center, #512017 0%, #241513 55%, #171514 100%);
+}
+
+.royal-letter::before,
+.royal-letter::after {
+  content: "✧";
+  position: absolute;
+  color: #c6a29b;
+  opacity: .25;
+  font-size: 150px;
+  pointer-events: none;
+}
+
+.royal-letter::before {
+  top: 40px;
+  left: 5%;
+}
+
+.royal-letter::after {
+  bottom: 40px;
+  right: 5%;
+}
+
+.royal-letter h2 {
+  font-size: clamp(36px, 5vw, 55px);
+  font-weight: 400;
+  line-height: 1.1;
+  margin-top: 25px;
+}
+
+.royal-letter h2 em {
+  color: #d4a79b;
+}
+
+.royal-subtitle {
+  margin-top: 20px;
+  color: #cbb8aa;
+  font-style: italic;
+  font-size: 17px;
+}
+
+/* ENVELOPE */
+
+.envelope-wrapper {
+  width: 320px;
+  height: 230px;
+  margin: 150px auto 35px;
+  position: relative;
+  perspective: 1000px;
+}
+
+.envelope {
+  position: absolute;
+  inset: 0;
+  background: #742719;
+  border: 2px solid #c6a26a;
+  box-shadow:
+    0 15px 50px #0009,
+    inset 0 0 25px #260b0833;
+}
+
+/* Envelope back */
+
+.envelope-back {
+  position: absolute;
+  inset: 0;
+  background: #792b1d;
+  z-index: 1;
+}
+
+/* Actual letter */
+
+.letter-paper {
+  position: absolute;
+  z-index: 2;
+  left: 5%;
+  top: 5%;
+  width: 90%;
+  height: 90%;
+  overflow: hidden;
+
+  background: #f5f0e8;
+  color: #4a211b;
+
+  transition:
+    transform 1.3s cubic-bezier(.2,.8,.2,1),
+    height 1.3s ease,
+    top 1.3s ease,
+    box-shadow 1.3s ease;
+}
+
+.paper-content {
+  padding: 30px 25px;
+  text-align: left;
+  opacity: 0;
+  transition: opacity .7s ease .7s;
+}
+
+.letter-top {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #a77d6c;
+  padding-bottom: 12px;
+
+  font: 9px Arial, sans-serif;
+  letter-spacing: 2px;
+}
+
+.letter-top span:last-child {
+  color: #9c3021;
+  font-size: 17px;
+}
+
+.paper-content h3 {
+  font-family: "Great Vibes", cursive;
+  font-size: 37px;
+  font-weight: 400;
+  margin: 25px 0;
+}
+
+.paper-content > p {
+  font-size: 17px;
+  line-height: 1.85;
+  white-space: pre-line;
+}
+
+.letter-sign {
+  margin-top: 35px;
+  font-style: italic;
+  font-size: 17px;
+  line-height: 1.8;
+}
+
+.letter-sign strong {
+  display: block;
+  font-family: "Great Vibes", cursive;
+  font-size: 35px;
+  font-weight: 400;
+  color: #922d20;
+}
+
+.paper-footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid #a77d6c;
+  font: 8px Arial, sans-serif;
+  letter-spacing: 2px;
+}
+
+/* Envelope front */
+
+.envelope-front {
+  position: absolute;
+  z-index: 3;
+  inset: 0;
+  background: #8f3020;
+  clip-path: polygon(0 0, 50% 57%, 100% 0, 100% 100%, 0 100%);
+  border-bottom: 2px solid #c6a26a;
+}
+
+/* Envelope flap */
+
+.envelope-flap {
+  position: absolute;
+  z-index: 4;
+  inset: 0;
+  background: #a13b29;
+  clip-path: polygon(0 0, 100% 0, 50% 55%);
+  transform-origin: top center;
+  transition: transform .9s ease, opacity .3s ease;
+}
+
+/* Royal stamp */
+
+.envelope-stamp {
+  position: absolute;
+  z-index: 5;
+  top: 48%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 55px;
+  height: 55px;
+  display: grid;
+  place-items: center;
+  border: 2px solid #d7b77e;
+  border-radius: 50%;
+  color: #f4dfba;
+  font-family: "Great Vibes", cursive;
+  font-size: 20px;
+  background: #742719;
+  transition: opacity .3s ease;
+}
+
+/* OPEN ANIMATION */
+
+.envelope-wrapper.open .envelope-flap {
+  transform: rotateX(180deg);
+  opacity: 0;
+  z-index: 0;
+}
+
+.envelope-wrapper.open .envelope-stamp {
+  opacity: 0;
+}
+
+.envelope-wrapper.open .letter-paper {
+  height: auto;
+  min-height: 620px;
+  top: -110px;
+  left: 50%;
+  width: min(90vw, 480px);
+  transform: translateX(-50%) translateY(-20px);
+  z-index: 6;
+  overflow: visible;
+  box-shadow: 0 20px 80px #000a;
+}
+
+.envelope-wrapper.open .paper-content {
+  opacity: 1;
+}
+
+.envelope-wrapper.open {
+  margin-bottom: 520px;
+}
+
+/* OPEN BUTTON */
+
+.open-letter-btn {
+  background: transparent;
+  border: 1px solid #c6a26a;
+  color: #f5f0e8;
+  padding: 16px 28px;
+  font: 10px Arial, sans-serif;
+  letter-spacing: 2px;
+  transition: .3s ease;
+}
+
+.open-letter-btn:hover {
+  background: #8f2819;
+  box-shadow: 0 0 25px #c6a26a55;
+}
+
+.open-letter-btn span {
+  color: #d7b77e;
+  margin: 0 8px;
+}
+
+.letter-hint {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #c6a29b;
+  font-style: italic;
+}
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+  .royal-letter {
+    padding: 75px 15px;
+  }
+
+  .envelope-wrapper {
+    width: 270px;
+    height: 195px;
+    margin-top: 130px;
+  }
+
+  .envelope-wrapper.open {
+    margin-bottom: 540px;
+  }
+
+  .envelope-wrapper.open .letter-paper {
+    top: -100px;
+    min-height: 650px;
+    width: 90vw;
+  }
+
+  .paper-content {
+    padding: 25px 20px;
+  }
+
+  .paper-content > p {
+    font-size: 15px;
+    line-height: 1.75;
+  }
+
+  .paper-content h3 {
+    font-size: 33px;
+  }
+}
+
+
+.future-letter-section {
+  background: #171514;
+  padding: 90px 20px;
+  color: #F5F0E8;
+  text-align: center;
+}
+
+.future-letter-card {
+  max-width: 760px;
+  margin: auto;
+  padding: 55px 35px;
+  border: 1px solid #8F2819;
+  background: #211b19;
+  border-radius: 8px;
+}
+
+.future-eyebrow {
+  color: #C6A29B;
+  letter-spacing: 4px;
+  font-size: 11px;
+  text-transform: uppercase;
+}
+
+.future-letter-card h2 {
+  color: #F5F0E8;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(32px, 6vw, 52px);
+  font-weight: 500;
+  margin: 18px 0;
+}
+
+.future-subtitle {
+  color: #C6A29B;
+  font-style: italic;
+}
+
+.countdown-box {
+  margin: 45px 0 35px;
+  padding: 28px 15px;
+  background: #F5F0E8;
+  color: #171514;
+  border-radius: 6px;
+}
+
+.countdown-heading {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+}
+
+.countdown-timer {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin: 25px 0;
+}
+
+.countdown-timer div {
+  min-width: 85px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.countdown-timer strong {
+  color: #8F2819;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 38px;
+}
+
+.countdown-timer span {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+#countdownMessage {
+  color: #8F2819;
+  font-style: italic;
+}
+
+.passkey-box {
+  margin-top: 35px;
+}
+
+.passkey-box > p:first-child {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 23px;
+}
+
+.passkey-hint {
+  color: #C6A29B;
+  font-size: 14px;
+}
+
+.passkey-controls {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.passkey-controls input {
+  padding: 13px;
+  min-width: 220px;
+  border: 1px solid #C6A29B;
+  background: #F5F0E8;
+  color: #171514;
+  border-radius: 4px;
+}
+
+.passkey-controls button {
+  padding: 13px 20px;
+  background: #8F2819;
+  color: #F5F0E8;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#passkeyMessage {
+  color: #C6A29B;
+  font-size: 13px;
+  margin-top: 12px;
+}
+
+.future-letter-content {
+  margin-top: 45px;
+  padding: 40px;
+  background: #F5F0E8;
+  color: #29211e;
+  text-align: left;
+  border-radius: 5px;
+}
+
+.future-letter-content[hidden] {
+  display: none;
+}
+
+.future-letter-content h3 {
+  color: #8F2819;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px;
+  margin: 25px 0 15px;
+}
+
+.future-letter-content p {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 19px;
+  line-height: 1.8;
+  margin: 17px 0;
+}
+
+.letter-divider {
+  text-align: center;
+  color: #8F2819;
+  font-size: 25px;
+  margin: 15px 0 35px;
+}
+
+.letter-signature {
+  color: #8F2819;
+  font-style: italic;
+  font-weight: 600;
+}
+
+.letter-ps {
+  font-style: italic;
+  color: #765e57;
+  font-size: 16px !important;
+}
+
+@media (max-width: 520px) {
+  .future-letter-card {
+    padding: 35px 17px;
+  }
+
+  .future-letter-content {
+    padding: 25px 18px;
+  }
+
+  .countdown-timer {
+    gap: 18px 5px;
+  }
+
+  .countdown-timer div {
+    min-width: 65px;
+  }
+
+  .countdown-timer strong {
+    font-size: 30px;
+  }
+}
+
+
 /* HEART ANIMATION */
 
 .floating-heart {

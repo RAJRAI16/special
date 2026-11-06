@@ -191,3 +191,143 @@ if (daysUntil > 0) {
 } else {
     document.title = "For Dabboo Devi ♥ Three Years of Us";
 }
+
+
+// ROYAL LOVE LETTER INTERACTION
+
+const royalEnvelope = document.getElementById("envelopeWrapper");
+const royalButton = document.getElementById("openRoyalLetter");
+const letterHint = document.getElementById("letterHint");
+
+let royalLetterOpened = false;
+
+royalButton.addEventListener("click", () => {
+
+  if (!royalLetterOpened) {
+
+    royalEnvelope.classList.add("open");
+    royalLetterOpened = true;
+
+    royalButton.innerHTML = "♥ CLOSE MY LETTER ♥";
+    letterHint.textContent =
+      "Every word comes straight from my heart.";
+
+    burstHearts(
+      window.innerWidth / 2,
+      window.innerHeight / 2,
+      20
+    );
+
+    setTimeout(() => {
+      document.getElementById("royalLetter")
+        .scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
+    }, 500);
+
+  } else {
+
+    royalEnvelope.classList.remove("open");
+    royalLetterOpened = false;
+
+    royalButton.innerHTML =
+      "♥ OPEN YOUR LETTER ♥";
+
+    letterHint.textContent =
+      "A little piece of my heart, just for you.";
+
+  }
+
+});
+
+
+const FUTURE_LETTER_DATE = new Date("2027-11-07T00:00:00+05:30").getTime();
+
+// Change this to your own secret passkey.
+const FUTURE_LETTER_PASSKEY = "07NOVFOREVER";
+
+const letter = document.getElementById("futureLetterContent");
+const passkeyInput = document.getElementById("futurePasskey");
+const passkeyMessage = document.getElementById("passkeyMessage");
+const unlockButton = document.getElementById("unlockFutureLetter");
+
+let letterOpened = false;
+
+function openFutureLetter(message) {
+  if (letterOpened) return;
+
+  letterOpened = true;
+
+  letter.hidden = false;
+  letter.setAttribute("aria-hidden", "false");
+
+  passkeyMessage.textContent = message;
+
+  document.getElementById("countdownMessage").textContent =
+    "The wait is over. Your letter is finally here. ❤️";
+
+  document.querySelector(".countdown-heading").textContent =
+    "A year of waiting, and now the moment has arrived.";
+
+  letter.scrollIntoView({
+    behavior: "smooth",
+    block: "start"
+  });
+}
+
+function updateFutureCountdown() {
+  const now = Date.now();
+  const remaining = FUTURE_LETTER_DATE - now;
+
+  // Main unlock condition: the date has arrived.
+  if (remaining <= 0) {
+    document.getElementById("days").textContent = "00";
+    document.getElementById("hours").textContent = "00";
+    document.getElementById("minutes").textContent = "00";
+    document.getElementById("seconds").textContent = "00";
+
+    openFutureLetter("Unlocked automatically on the special date. ❤️");
+    return;
+  }
+
+  const days = Math.floor(remaining / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((remaining / (1000 * 60 * 60)) % 24);
+  const minutes = Math.floor((remaining / (1000 * 60)) % 60);
+  const seconds = Math.floor((remaining / 1000) % 60);
+
+  document.getElementById("days").textContent = String(days).padStart(2, "0");
+  document.getElementById("hours").textContent = String(hours).padStart(2, "0");
+  document.getElementById("minutes").textContent = String(minutes).padStart(2, "0");
+  document.getElementById("seconds").textContent = String(seconds).padStart(2, "0");
+}
+
+// Optional early unlock using the passkey.
+function unlockWithPasskey() {
+  const enteredPasskey = passkeyInput.value.trim();
+
+  if (enteredPasskey.toUpperCase() === FUTURE_LETTER_PASSKEY.toUpperCase()) {
+    openFutureLetter("You found the secret way in. ❤️");
+  } else {
+    passkeyMessage.textContent = "That's not the right passkey. Try again, my love.";
+  }
+}
+
+unlockButton.addEventListener("click", unlockWithPasskey);
+
+passkeyInput.addEventListener("keydown", (event) => {
+  if (event.key === "Enter") {
+    unlockWithPasskey();
+  }
+});
+
+// Start immediately and refresh every second.
+updateFutureCountdown();
+const futureLetterTimer = setInterval(() => {
+  if (letterOpened) {
+    clearInterval(futureLetterTimer);
+    return;
+  }
+
+  updateFutureCountdown();
+}, 1000);
